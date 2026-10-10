@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cevoxxficc5ho"]
+
+[ext_resource type="Script" uid="uid://cdbdsxc6xyj3u" path="res://Upgrades/UpgradeMenu.cs" id="1_4ol1d"]
+[ext_resource type="Script" uid="uid://cq146f5u2b75e" path="res://Upgrades/UpgradeButton.cs" id="2_wvyhe"]
+
+[node name="UpgradeMenu" type="Control" unique_id=63794780]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4ol1d")
+
+[node name="UpgradeButton" type="Button" parent="." unique_id=247784939]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("2_wvyhe")

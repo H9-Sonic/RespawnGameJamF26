@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bxr722u545xor"]
+
+[ext_resource type="PackedScene" uid="uid://bfe51swgj4cph" path="res://Map/test_map.tscn" id="1_1tnmm"]
+[ext_resource type="PackedScene" uid="uid://dpkm2mginudre" path="res://Enemies/enemy.tscn" id="2_lmrd3"]
+
+[node name="GameMaster" type="Node2D" unique_id=1429793158]
+
+[node name="TestMap" parent="." unique_id=503565509 instance=ExtResource("1_1tnmm")]
+
+[node name="Skeleton" parent="." unique_id=551008024 instance=ExtResource("2_lmrd3")]
+position = Vector2(378, 262)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=642527630]
+position = Vector2(528, 324)
+zoom = Vector2(2, 2)

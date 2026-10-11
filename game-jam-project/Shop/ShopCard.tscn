@@ -38,4 +38,5 @@ text = "Buy"
 
 [node name="LockButton" type="Button" parent="VBoxContainer" unique_id=358550512]
 layout_mode = 2
+toggle_mode = true
 text = "Lock"

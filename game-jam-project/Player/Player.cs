@@ -22,6 +22,12 @@ public partial class Player : CharacterBody2D, IDamageable
 
 	[ExportGroup("Visuals")]
 	[Export] public bool SpritesFaceLeft { get; set; } = false;       // false = art faces right
+	
+	[ExportGroup("Health Bar")]
+	[Export] public Vector2 HealthBarOffset { get; set; } = new Vector2(0f, -22f);
+	[Export] public float HealthBarWidth { get; set; } = 24f;
+
+	private HealthBar _healthBar;
 
 	private AnimatedSprite2D _sprite;
 	private Node2D _attackPivot;
@@ -45,7 +51,11 @@ public partial class Player : CharacterBody2D, IDamageable
 		Stats = (PlayerStats)Stats.Duplicate();
 		Stats.Init();
 		Stats.Died += OnDied;
-
+		
+		_healthBar = new HealthBar { Position = HealthBarOffset, Width = HealthBarWidth };
+		AddChild(_healthBar);
+		_healthBar.SetValue(Stats.CurrentHealth, Stats.MaxHealth);   // Init() already fired its signal before we were listening
+		Stats.HealthChanged += _healthBar.SetValue;
 		_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_attackPivot = GetNode<Node2D>("AttackPivot");
 		_hitbox = GetNode<Area2D>("AttackPivot/Hitbox");
@@ -239,6 +249,7 @@ public partial class Player : CharacterBody2D, IDamageable
 		_invulnerable = false;
 		Velocity = Vector2.Zero;
 		_sprite.Modulate = Colors.White;
+		_healthBar.Visible = false;
 		PlayAnim(AnimDeath);
 		GD.Print("Player died");
 		// Show a game over screen, respawn, etc.

@@ -32,7 +32,7 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_vertical = 0
 bbcode_enabled = true
-text = "[wave] Dungeon Defender
+text = "Dungeon Defender
 "
 fit_content = true
 autowrap_mode = 0

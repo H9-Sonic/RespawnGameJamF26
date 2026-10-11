@@ -19,6 +19,9 @@
 [ext_resource type="Resource" uid="uid://co71sy7p54r0i" path="res://Upgrades/Range1.25x.tres" id="17_58sjm"]
 [ext_resource type="Resource" uid="uid://tcl73n3abp5h" path="res://Upgrades/Range10%.tres" id="18_ov3d5"]
 [ext_resource type="Resource" uid="uid://bbrcdhpsshp86" path="res://Upgrades/Range+5.tres" id="19_fjdmx"]
+[ext_resource type="Resource" path="res://Upgrades/CoinDrop+0.2.tres" id="20_coinflat"]
+[ext_resource type="Resource" path="res://Upgrades/CoinDrop15%.tres" id="21_coinpct"]
+[ext_resource type="Resource" path="res://Upgrades/CoinDrop1.5x.tres" id="22_coinmult"]
 
 [node name="ShopMenu" type="Control" unique_id=1291688526 node_paths=PackedStringArray("CardContainer", "CloseButton", "TitleLabel", "CoinsLabel", "TimerLabel")]
 process_mode = 3
@@ -34,8 +37,7 @@ CloseButton = NodePath("Center/PanelContainer/VBoxContainer/CloseButton")
 TitleLabel = NodePath("Center/PanelContainer/VBoxContainer/Title")
 CoinsLabel = NodePath("Center/PanelContainer/VBoxContainer/CoinsLabel")
 TimerLabel = NodePath("Center/PanelContainer/VBoxContainer/TimerLabel")
-UpgradePool = Array[ExtResource("2_jx4i6")]([ExtResource("4_g86e4"), ExtResource("5_fnndu"), ExtResource("6_uij6r"), ExtResource("7_14fkx"), ExtResource("8_4mwsr"), ExtResource("9_nd2h3"), ExtResource("10_f32jd"), ExtResource("11_obppw"), ExtResource("12_33sc2"), ExtResource("13_dj6sk"), ExtResource("14_ovuqo"), ExtResource("15_p8u6w"), ExtResource("16_2re6t"), ExtResource("17_58sjm"), ExtResource("18_ov3d5"), ExtResource("19_fjdmx")])
-OpenOnReady = true
+UpgradePool = Array[ExtResource("2_jx4i6")]([ExtResource("4_g86e4"), ExtResource("5_fnndu"), ExtResource("6_uij6r"), ExtResource("7_14fkx"), ExtResource("8_4mwsr"), ExtResource("9_nd2h3"), ExtResource("10_f32jd"), ExtResource("11_obppw"), ExtResource("12_33sc2"), ExtResource("13_dj6sk"), ExtResource("14_ovuqo"), ExtResource("15_p8u6w"), ExtResource("16_2re6t"), ExtResource("17_58sjm"), ExtResource("18_ov3d5"), ExtResource("19_fjdmx"), ExtResource("20_coinflat"), ExtResource("21_coinpct"), ExtResource("22_coinmult")])
 
 [node name="Dim" type="ColorRect" parent="." unique_id=930073745]
 layout_mode = 0

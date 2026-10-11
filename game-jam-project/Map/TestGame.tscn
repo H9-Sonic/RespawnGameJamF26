@@ -5,13 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://dpkm2mginudre" path="res://Enemies/enemy.tscn" id="2_lmrd3"]
 [ext_resource type="PackedScene" uid="uid://5ursa0tx3jem" path="res://Player/player.tscn" id="3_lmrd3"]
 [ext_resource type="PackedScene" uid="uid://6v7bp7bytk82" path="res://Shop/ShopMenu.tscn" id="5_vf1ww"]
+[ext_resource type="PackedScene" path="res://TitleandMenus/GameOverMenu.tscn" id="6_gameover"]
 
-[node name="GameMaster" type="Node2D" unique_id=1429793158 node_paths=PackedStringArray("player", "spawnPointsParent", "shop", "waveLabel", "coinsLabel")]
+[node name="GameMaster" type="Node2D" unique_id=1429793158 node_paths=PackedStringArray("player", "spawnPointsParent", "shop", "gameOver", "waveLabel", "coinsLabel")]
 script = ExtResource("1_lmrd3")
 skeletonScene = ExtResource("2_lmrd3")
 player = NodePath("Player")
 spawnPointsParent = NodePath("SpawnPoints")
 shop = NodePath("CanvasLayer/ShopMenu")
+gameOver = NodePath("GameOverLayer/GameOverMenu")
 waveLabel = NodePath("CanvasLayer2/WaveLabel")
 coinsLabel = NodePath("CanvasLayer2/CoinLabel")
 
@@ -53,10 +55,11 @@ position = Vector2(274, -2)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1149730610]
 
-[node name="ShopMenu" parent="CanvasLayer" unique_id=1291688526 node_paths=PackedStringArray("PlayerNode") instance=ExtResource("5_vf1ww")]
+[node name="ShopMenu" parent="CanvasLayer" unique_id=1291688526 node_paths=PackedStringArray("PlayerNode", "CoinsLabel") instance=ExtResource("5_vf1ww")]
 offset_right = 1152.0
 offset_bottom = 648.0
 PlayerNode = NodePath("../../Player")
+CoinsLabel = NodePath("../../CanvasLayer2/CoinLabel")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1619751251]
 
@@ -75,3 +78,8 @@ offset_bottom = 23.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
+
+[node name="GameOverLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="GameOverMenu" parent="GameOverLayer" instance=ExtResource("6_gameover")]

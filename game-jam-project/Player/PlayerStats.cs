@@ -23,6 +23,9 @@ public partial class PlayerStats : Resource
 	[Export] public float BaseDashDuration { get; set; } = 0.15f; // seconds
 	[Export] public float BaseDashCooldown { get; set; } = 2.0f;  // seconds
 
+	[ExportGroup("Economy")]
+	[Export] public float BaseCoinDropMultiplier { get; set; } = 1.0f;   // 1 = no change to the drop chance set on GameMaster
+
 	public float MaxHealth    => Get(StatType.MaxHealth);
 	public float MoveSpeed    => Get(StatType.MoveSpeed);
 	public float Damage       => Get(StatType.Damage);
@@ -31,6 +34,7 @@ public partial class PlayerStats : Resource
 	public float DashSpeed    => Get(StatType.DashSpeed);
 	public float DashDuration => Get(StatType.DashDuration);
 	public float DashCooldown => Get(StatType.DashCooldown);
+	public float CoinDropMultiplier => Get(StatType.CoinDropMultiplier);
 
 	public float CurrentHealth { get; private set; }
 
@@ -131,6 +135,7 @@ public partial class PlayerStats : Resource
 		StatType.DashSpeed    => BaseDashSpeed,
 		StatType.DashDuration => BaseDashDuration,
 		StatType.DashCooldown => BaseDashCooldown,
+		StatType.CoinDropMultiplier => BaseCoinDropMultiplier,
 		_ => 0f,
 	};
 

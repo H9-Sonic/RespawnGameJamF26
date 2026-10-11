@@ -387,7 +387,6 @@ animation = &"Walking"
 script = ExtResource("7_4o6mh")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=689232547]
-debug_enabled = true
 
 [node name="AttackRange" type="Area2D" parent="." unique_id=820455380]
 collision_layer = 5

@@ -25,13 +25,12 @@
 [ext_resource type="Resource" uid="uid://bbrcdhpsshp86" path="res://Upgrades/Range+5.tres" id="22_85wkh"]
 [ext_resource type="Resource" uid="uid://bkl2r5cq3h3fb" path="res://Upgrades/CoinDrop15%.tres" id="23_eje7e"]
 
-[node name="GameMaster" type="Node2D" unique_id=1429793158 node_paths=PackedStringArray("player", "spawnPointsParent", "shop", "gameOver", "waveLabel", "coinsLabel")]
+[node name="GameMaster" type="Node2D" unique_id=1429793158 node_paths=PackedStringArray("player", "spawnPointsParent", "shop", "waveLabel", "coinsLabel")]
 script = ExtResource("1_lmrd3")
 skeletonScene = ExtResource("2_lmrd3")
 player = NodePath("Player")
 spawnPointsParent = NodePath("SpawnPoints")
 shop = NodePath("CanvasLayer/ShopMenu")
-gameOver = NodePath("GameOverLayer/GameOverMenu")
 waveLabel = NodePath("CanvasLayer2/WaveLabel")
 coinsLabel = NodePath("CanvasLayer2/CoinLabel")
 

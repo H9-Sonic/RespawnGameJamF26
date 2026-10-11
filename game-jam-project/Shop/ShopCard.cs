@@ -41,4 +41,20 @@ public partial class ShopCard : PanelContainer
 	}
 
 	public void FocusSelect() => SelectButton.GrabFocus();
+	
+	public bool IsSold { get; private set; }
+
+public void MarkSold()
+{
+	IsSold = true;
+
+	SelectButton.Disabled = true;
+	SelectButton.Text = "Sold";
+
+	LockButton.SetPressedNoSignal(false);
+	LockButton.Text = "Lock";
+	LockButton.Disabled = true;
+
+	Modulate = new Color(1f, 1f, 1f, 0.5f);   // dimmed
+}
 }

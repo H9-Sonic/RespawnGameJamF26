@@ -38,6 +38,12 @@ public partial class GameMaster : Node2D
 	[Export]
 	float ShopTimer = 30f;
 
+	[ExportGroup("Game Over")]
+	[Export]
+	GameOverMenu gameOver;
+	[Export]
+	float gameOverDelay = 1.5f;   // seconds to let the death animation play before the screen shows
+
 	[ExportGroup("HUD")]
 	[Export]
 	Label waveLabel;
@@ -58,6 +64,9 @@ public partial class GameMaster : Node2D
 	int _alive;
 	int _coins;
 	int _coinsThisWave;
+	int _coinsEarnedTotal;
+	int _kills;
+	bool _gameOverShown;
 	double _timer;
 	readonly RandomNumberGenerator _rng = new(); 
 	// Called when the node enters the scene tree for the first time.
@@ -82,6 +91,7 @@ public partial class GameMaster : Node2D
 		if(_phase != Phase.Over && player.IsDead)
 		{
 			_phase = Phase.Over;
+			_timer = gameOverDelay;
 			shop.Close();
 			GD.Print($"Game Over! You reached wave {_wave} with {_coins} coins");
 			return;
@@ -117,6 +127,18 @@ public partial class GameMaster : Node2D
 				{
 					shop.Close();
 					StartWave();
+				}
+				break;
+
+			case Phase.Over:
+				if (!_gameOverShown)
+				{
+					_timer -= delta;
+					if (_timer <= 0)
+					{
+						_gameOverShown = true;
+						gameOver.Open(_wave, _coinsEarnedTotal, _kills);
+					}
 				}
 				break;
 		}
@@ -162,13 +184,18 @@ public partial class GameMaster : Node2D
 	void OnSkeletonDied(Skeleton skel)
 	{
 		_alive--;
+		_kills++;
 
-		if(_rng.Randf() < CoinDropChance)
+		// Shop upgrades scale the base chance. Anything above 100% is wasted, so clamp it.
+		float dropChance = Mathf.Clamp(CoinDropChance * player.Stats.CoinDropMultiplier, 0f, 1f);
+
+		if(_rng.Randf() < dropChance)
 		{
 			int bonus = _wave / wavesPerCoinBonus;
 			int amount = _rng.RandiRange(minCoins, maxCoins + bonus);
 			_coins += amount;
 			_coinsThisWave += amount;
+			_coinsEarnedTotal += amount;
 			UpdateHUD();
 		}
 	}

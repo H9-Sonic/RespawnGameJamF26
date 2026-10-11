@@ -10,6 +10,7 @@ public enum StatType
 	DashSpeed,
 	DashDuration,
 	DashCooldown,
+	CoinDropMultiplier,   // scales GameMaster's base coin drop chance. Keep new stats at the END of this enum: .tres files store the number.
 }
 
 public enum ModifierType

@@ -6,12 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://5ursa0tx3jem" path="res://Player/player.tscn" id="3_lmrd3"]
 [ext_resource type="PackedScene" uid="uid://6v7bp7bytk82" path="res://Shop/ShopMenu.tscn" id="5_vf1ww"]
 
-[node name="GameMaster" type="Node2D" unique_id=1429793158 node_paths=PackedStringArray("player", "spawnPointsParent", "shop")]
+[node name="GameMaster" type="Node2D" unique_id=1429793158 node_paths=PackedStringArray("player", "spawnPointsParent", "shop", "waveLabel", "coinsLabel")]
 script = ExtResource("1_lmrd3")
 skeletonScene = ExtResource("2_lmrd3")
 player = NodePath("Player")
 spawnPointsParent = NodePath("SpawnPoints")
 shop = NodePath("CanvasLayer/ShopMenu")
+waveLabel = NodePath("CanvasLayer2/WaveLabel")
+coinsLabel = NodePath("CanvasLayer2/CoinLabel")
 
 [node name="TestMap" parent="." unique_id=503565509 instance=ExtResource("1_1tnmm")]
 
@@ -55,3 +57,21 @@ position = Vector2(274, -2)
 offset_right = 1152.0
 offset_bottom = 648.0
 PlayerNode = NodePath("../../Player")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1619751251]
+
+[node name="WaveLabel" type="Label" parent="CanvasLayer2" unique_id=1795478341]
+offset_right = 40.0
+offset_bottom = 23.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="CoinLabel" type="Label" parent="CanvasLayer2" unique_id=556038744]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0

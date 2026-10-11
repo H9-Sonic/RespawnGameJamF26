@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://ht8v6cs7hkc4"]
 
-[ext_resource type="Texture2D" uid="uid://dxbyemwq1oqhs" path="res://Assets/MoveSpeedPercent.png" id="1_osepx"]
+[ext_resource type="Texture2D" uid="uid://dxbyemwq1oqhs" path="res://Assets/Upgrade Assets/MoveSpeedPercent.png" id="1_osepx"]
 [ext_resource type="Script" uid="uid://dnrvcarjcbghf" path="res://Player/StatModifier.cs" id="2_lmmtc"]
 [ext_resource type="Script" uid="uid://dh4ocdw785wgm" path="res://Upgrades/Upgrade.cs" id="3_pn1sh"]
 

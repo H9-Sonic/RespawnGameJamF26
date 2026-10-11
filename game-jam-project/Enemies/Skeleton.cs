@@ -140,4 +140,11 @@ public partial class Skeleton : CharacterBody2D, IDamageable
 		Died?.Invoke(this);
 		QueueFree();
 	}
+
+	public void WaveScale(float healthMult, float damageMult)
+	{
+		maxHealth *= healthMult;
+		health = maxHealth;
+		damage *= damageMult;
+	}
 }

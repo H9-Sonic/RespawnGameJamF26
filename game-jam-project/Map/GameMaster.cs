@@ -28,6 +28,8 @@ public partial class GameMaster : Node2D
 	[Export(PropertyHint.Range, "0,1,0.05")]
 	float CoinDropChance = 0.4f;
 	[Export]
+	int wavesPerCoinBonus = 3;
+	[Export]
 	int minCoins = 1;
 	[Export]
 	int maxCoins = 3;
@@ -35,6 +37,18 @@ public partial class GameMaster : Node2D
 	[ExportGroup("Shop")]
 	[Export]
 	float ShopTimer = 30f;
+
+	[ExportGroup("HUD")]
+	[Export]
+	Label waveLabel;
+	[Export]
+	Label coinsLabel;
+
+	[ExportGroup("Scaling")]
+	[Export]
+	float healthScalePerWave = 0.15f;
+	[Export]
+	float damageScalePerWave = 0.10f;
 
 	enum Phase {Starting, Spawning, Fighting, Shop, Over }
 
@@ -53,7 +67,12 @@ public partial class GameMaster : Node2D
 		ProcessMode = ProcessModeEnum.Always;
 
 		_rng.Randomize();
-		shop.CoinsSpent += amount => _coins -= amount;
+		shop.CoinsSpent += amount => 
+		{
+			_coins -= amount;
+			UpdateHUD();
+		};
+		UpdateHUD();
 		_timer = firstWaveDelay;
 	}
 
@@ -111,6 +130,7 @@ public partial class GameMaster : Node2D
 		_timer = 0;
 		_phase = Phase.Spawning;
 		GD.Print($"Wave {_wave}: {_toSpawn} enemies approaching!");
+		UpdateHUD();
 	}
 
 	void EndWave()
@@ -127,6 +147,10 @@ public partial class GameMaster : Node2D
 		var skelly = skeletonScene.Instantiate<Skeleton>();
 		player.GetParent().AddChild(skelly);
 
+		float healthMult = 1.0f + (_wave - 1) * healthScalePerWave;
+		float damageMult = 1.0f + (_wave - 1) * damageScalePerWave;
+		skelly.WaveScale(healthMult, damageMult);
+
 		var points = spawnPointsParent.GetChildren();
 		var point = (Node2D)points[_rng.RandiRange(0, points.Count - 1)];
 		skelly.GlobalPosition = point.GlobalPosition;
@@ -141,9 +165,19 @@ public partial class GameMaster : Node2D
 
 		if(_rng.Randf() < CoinDropChance)
 		{
-			int amount = _rng.RandiRange(minCoins, maxCoins);
+			int bonus = _wave / wavesPerCoinBonus;
+			int amount = _rng.RandiRange(minCoins, maxCoins + bonus);
 			_coins += amount;
 			_coinsThisWave += amount;
+			UpdateHUD();
 		}
+	}
+
+	void UpdateHUD()
+	{
+		if(IsInstanceValid(waveLabel))
+			waveLabel.Text = $"Wave {_wave}";
+		if(IsInstanceValid(coinsLabel))
+			coinsLabel.Text = $"Coins {_coins}";
 	}
 }

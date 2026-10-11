@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cp5174wiiqvke"]
+
+[ext_resource type="PackedScene" uid="uid://6v7bp7bytk82" path="res://Shop/ShopMenu.tscn" id="1_6uqi0"]
+[ext_resource type="PackedScene" uid="uid://5ursa0tx3jem" path="res://Player/player.tscn" id="2_ppyta"]
+[ext_resource type="PackedScene" uid="uid://xyfyq2r8l3of" path="res://Shop/ShopCard.tscn" id="3_ykrsh"]
+
+[node name="Test" type="Node2D" unique_id=48897952]
+
+[node name="ShopMenu" parent="." unique_id=1915947621 node_paths=PackedStringArray("PlayerNode", "CardContainer") instance=ExtResource("1_6uqi0")]
+PlayerNode = NodePath("Player")
+CardContainer = NodePath("ShopCard")
+
+[node name="Player" parent="ShopMenu" unique_id=1514779434 instance=ExtResource("2_ppyta")]
+
+[node name="ShopCard" parent="ShopMenu" unique_id=1489847266 instance=ExtResource("3_ykrsh")]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 220.0

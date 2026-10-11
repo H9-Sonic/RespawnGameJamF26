@@ -368,6 +368,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dp1by"]
+size = Vector2(22.5, 23)
+
 [node name="Skeleton" type="CharacterBody2D" unique_id=551008024 node_paths=PackedStringArray("skelAnim")]
 script = ExtResource("1_gk8ng")
 skelAnim = NodePath("AnimatedSprite2D")
@@ -383,3 +386,13 @@ script = ExtResource("7_4o6mh")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=689232547]
 debug_enabled = true
+
+[node name="AttackRange" type="Area2D" parent="." unique_id=820455380]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange" unique_id=176729739]
+position = Vector2(-2.25, 5)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_dp1by")
+
+[connection signal="body_entered" from="AttackRange" to="." method="OnAttackRangeBodyEnter"]
+[connection signal="body_exited" from="AttackRange" to="." method="OnAttackRangeBodyExit"]

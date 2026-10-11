@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bfe51swgj4cph" path="res://Map/test_map.tscn" id="1_1tnmm"]
 [ext_resource type="PackedScene" uid="uid://dpkm2mginudre" path="res://Enemies/enemy.tscn" id="2_lmrd3"]
+[ext_resource type="PackedScene" uid="uid://5ursa0tx3jem" path="res://Player/player.tscn" id="3_lmrd3"]
 
 [node name="GameMaster" type="Node2D" unique_id=1429793158]
 
@@ -10,6 +11,9 @@
 [node name="Skeleton" parent="." unique_id=551008024 instance=ExtResource("2_lmrd3")]
 position = Vector2(378, 262)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=642527630]
-position = Vector2(528, 324)
+[node name="Player" parent="." unique_id=1514779434 instance=ExtResource("3_lmrd3")]
+position = Vector2(530, 313)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=642527630]
+position = Vector2(-2, 11)
 zoom = Vector2(2, 2)

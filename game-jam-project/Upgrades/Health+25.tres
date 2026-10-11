@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://1o2cksdc6ick"]
+
+[ext_resource type="Texture2D" uid="uid://divj72vgjyee1" path="res://Assets/Upgrade Assets/HealthAdd.png" id="1_jt5oh"]
+[ext_resource type="Script" uid="uid://dnrvcarjcbghf" path="res://Player/StatModifier.cs" id="2_48cwn"]
+[ext_resource type="Script" uid="uid://dh4ocdw785wgm" path="res://Upgrades/Upgrade.cs" id="3_65csj"]
+
+[sub_resource type="Resource" id="Resource_8be4f"]
+script = ExtResource("2_48cwn")
+Stat = 0
+Value = 25.0
+metadata/_custom_type_script = "uid://dnrvcarjcbghf"
+
+[resource]
+script = ExtResource("3_65csj")
+DisplayName = "Tough Love"
+Description = "Increase Health"
+Icon = ExtResource("1_jt5oh")
+Modifiers = Array[ExtResource("2_48cwn")]([SubResource("Resource_8be4f")])
+metadata/_custom_type_script = "uid://dh4ocdw785wgm"

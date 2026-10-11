@@ -29,6 +29,7 @@ public partial class ShopMenu : Control
 	private int _coins;
 	private int _earned;
 	private int _wave;
+	private ShopCard[] _cards;
 
 	public override void _Ready()
 	{
@@ -41,6 +42,8 @@ public partial class ShopMenu : Control
 		CloseButton.Pressed += Close;
 
 		if (OpenOnReady) CallDeferred(MethodName.Open);
+		
+		_cards = new ShopCard[ChoiceCount];
 	}
 
 	public override void _UnhandledInput(InputEvent e)
@@ -54,7 +57,7 @@ public partial class ShopMenu : Control
 
 	public void Open(int wave, int earned, int coins)
 	{
-		GD.Print($"Shop.Open called. visible{Visible}, pool={UpgradePool.Count}");
+		GD.Print($"Open called. Visible={Visible}, pool={UpgradePool.Count}");
 		if (Visible || UpgradePool.Count == 0) return;
 
 		_wave = wave;
@@ -62,11 +65,13 @@ public partial class ShopMenu : Control
 		_coins = coins;
 
 		RollSlots();
+		GD.Print("rolled");
 		BuildCards();
 		RefreshLabels();
 
 		Visible = true;
 		GetTree().Paused = true;
+		GD.Print("opened");
 	}
 
 	public void Close()
@@ -115,7 +120,7 @@ public partial class ShopMenu : Control
 		}
 	}
 
-	private void BuildCards()
+		private void BuildCards()
 	{
 		foreach (Node child in CardContainer.GetChildren())
 		{
@@ -123,7 +128,7 @@ public partial class ShopMenu : Control
 			child.QueueFree();
 		}
 
-		ShopCard first = null;
+		System.Array.Clear(_cards);
 
 		for (int i = 0; i < _slots.Length; i++)
 		{
@@ -134,13 +139,10 @@ public partial class ShopMenu : Control
 			card.Setup(i, _slots[i], _locked[i]);
 			card.Chosen += OnChosen;
 			card.LockToggled += OnLockToggled;
-
-			card.NameLabel.Text += $" ({_slots[i].Cost} coins)";
-			card.SelectButton.Disabled = _coins < _slots[i].Cost;
-			first ??= card;
+			_cards[i] = card;
 		}
 
-		first?.FocusSelect();   // keyboard / gamepad support
+		FocusFirstAvailable();
 	}
 
 	private void OnLockToggled(int slot, bool locked) => _locked[slot] = locked;
@@ -156,11 +158,25 @@ public partial class ShopMenu : Control
 
 		if (RemoveChosenFromPool) UpgradePool.Remove(upgrade);
 
-		// The taken slot is consumed: unlock it so it rerolls next time.
+		// The slot is consumed: it rerolls the next time the shop opens.
 		_locked[slot] = false;
 		_slots[slot] = null;
 
-		BuildCards();
-		RefreshLabels();
+		_cards[slot].MarkSold();
+		FocusFirstAvailable();   // a disabled button loses focus, so move it
+	}
+	
+	private void FocusFirstAvailable()
+	{
+		foreach (ShopCard card in _cards)
+		{
+			if (card != null && !card.IsSold)
+			{
+				card.FocusSelect();
+				return;
+			}
+		}
+
+		CloseButton.GrabFocus();
 	}
 }

@@ -86,7 +86,6 @@ public partial class Player : CharacterBody2D, IDamageable
 		MoveAndSlide();
 	}
 
-	// ---------- States ----------
 
 	private void HandleNormal(Vector2 input)
 	{
@@ -126,7 +125,6 @@ public partial class Player : CharacterBody2D, IDamageable
 			EndDash();
 	}
 
-	// ---------- Facing ----------
 
 	private void UpdateFacing(Vector2 input)
 	{
@@ -143,7 +141,6 @@ public partial class Player : CharacterBody2D, IDamageable
 		_sprite.FlipH = SpritesFaceLeft ? _facingRight : !_facingRight;
 	}
 
-	// ---------- Attack ----------
 
 	private void StartAttack()
 	{
@@ -201,7 +198,6 @@ public partial class Player : CharacterBody2D, IDamageable
 		_hitboxShape.Position = new Vector2(Stats.Range / 2f + 8f, 0f);
 	}
 
-	// ---------- Dash ----------
 
 	private bool WantsDash() =>
 		Input.IsActionJustPressed("dash") && _dashCooldownLeft <= 0.0;
@@ -230,7 +226,6 @@ public partial class Player : CharacterBody2D, IDamageable
 		_sprite.Modulate = Colors.White;
 	}
 
-	// ---------- Health ----------
 
 	public void TakeDamage(float amount, Vector2 sourcePosition)
 	{
@@ -249,7 +244,6 @@ public partial class Player : CharacterBody2D, IDamageable
 		// Show a game over screen, respawn, etc.
 	}
 
-	// ---------- Animation helper ----------
 
 	private void PlayAnim(string anim, float speed = 1f)
 	{

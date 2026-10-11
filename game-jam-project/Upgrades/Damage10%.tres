@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://cdnyuba8dg7yw"]
+
+[ext_resource type="Script" uid="uid://dnrvcarjcbghf" path="res://Player/StatModifier.cs" id="1_56w0m"]
+[ext_resource type="Texture2D" uid="uid://b7y3d8wwchlih" path="res://Assets/Upgrade Assets/Damage10%.png" id="1_flg85"]
+[ext_resource type="Script" uid="uid://dh4ocdw785wgm" path="res://Upgrades/Upgrade.cs" id="2_flg85"]
+
+[sub_resource type="Resource" id="Resource_0afw6"]
+script = ExtResource("1_56w0m")
+Type = 1
+Value = 0.1
+metadata/_custom_type_script = "uid://dnrvcarjcbghf"
+
+[resource]
+script = ExtResource("2_flg85")
+DisplayName = "LoliWop"
+Description = "Increase Damage by 10%"
+Icon = ExtResource("1_flg85")
+Modifiers = Array[ExtResource("1_56w0m")]([SubResource("Resource_0afw6")])
+metadata/_custom_type_script = "uid://dh4ocdw785wgm"

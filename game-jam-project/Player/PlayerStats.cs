@@ -9,8 +9,6 @@ public partial class PlayerStats : Resource
 	[Signal] public delegate void DiedEventHandler();
 	[Signal] public delegate void StatsChangedEventHandler();
 
-	// ---------- Base values (edited in the inspector) ----------
-
 	[ExportGroup("Core")]
 	[Export] public float BaseMaxHealth { get; set; } = 100f;
 	[Export] public float BaseMoveSpeed { get; set; } = 200f;     // pixels per second
@@ -21,11 +19,9 @@ public partial class PlayerStats : Resource
 	[Export] public float BaseRange { get; set; } = 40f;          // length of the hitbox in pixels
 
 	[ExportGroup("Dash")]
-	[Export] public float BaseDashSpeed { get; set; } = 550f;
+	[Export] public float BaseDashSpeed { get; set; } = 350f;
 	[Export] public float BaseDashDuration { get; set; } = 0.15f; // seconds
-	[Export] public float BaseDashCooldown { get; set; } = 0.8f;  // seconds
-
-	// ---------- Final values (base + upgrades). Player.cs keeps using these names. ----------
+	[Export] public float BaseDashCooldown { get; set; } = 2.0f;  // seconds
 
 	public float MaxHealth    => Get(StatType.MaxHealth);
 	public float MoveSpeed    => Get(StatType.MoveSpeed);
@@ -38,7 +34,6 @@ public partial class PlayerStats : Resource
 
 	public float CurrentHealth { get; private set; }
 
-	// Floor so a harsh debuff can never produce 0 or negative (AttackSpeed is used as a divisor).
 	private const float MinStatValue = 0.01f;
 
 	private readonly List<Upgrade> _upgrades = new();
@@ -54,7 +49,6 @@ public partial class PlayerStats : Resource
 		EmitSignal(SignalName.HealthChanged, CurrentHealth, MaxHealth);
 	}
 
-	// ---------- Upgrades ----------
 
 	public void AddUpgrade(Upgrade upgrade)
 	{
@@ -83,7 +77,6 @@ public partial class PlayerStats : Resource
 		_dirty = true;
 		float newMax = MaxHealth;
 
-		// Gaining max health also grants that much current health; losing it clamps current.
 		if (newMax > oldMax) CurrentHealth += newMax - oldMax;
 		CurrentHealth = Mathf.Min(CurrentHealth, newMax);
 
@@ -91,7 +84,6 @@ public partial class PlayerStats : Resource
 		EmitSignal(SignalName.HealthChanged, CurrentHealth, newMax);
 	}
 
-	// ---------- Stat calculation ----------
 
 	// final = (base + sum(flat)) * (1 + sum(percent)) * product(multipliers)
 	public float Get(StatType stat)
@@ -142,7 +134,6 @@ public partial class PlayerStats : Resource
 		_ => 0f,
 	};
 
-	// ---------- Health ----------
 
 	public void TakeDamage(float amount)
 	{

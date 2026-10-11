@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://x4v3q1q74h10"]
+
+[ext_resource type="Texture2D" uid="uid://b11w8kunnna3b" path="res://Assets/Upgrade Assets/AttackSpeedMultiplier.png" id="1_jvjts"]
+[ext_resource type="Script" uid="uid://dnrvcarjcbghf" path="res://Player/StatModifier.cs" id="2_a0j7d"]
+[ext_resource type="Script" uid="uid://dh4ocdw785wgm" path="res://Upgrades/Upgrade.cs" id="3_hkbgb"]
+
+[sub_resource type="Resource" id="Resource_8be4f"]
+script = ExtResource("2_a0j7d")
+Stat = 3
+Type = 2
+Value = 1.25
+metadata/_custom_type_script = "uid://dnrvcarjcbghf"
+
+[resource]
+script = ExtResource("3_hkbgb")
+DisplayName = "Mysterious Ooze"
+Description = "Multiply Attack Speed By 1.25"
+Icon = ExtResource("1_jvjts")
+Modifiers = Array[ExtResource("2_a0j7d")]([SubResource("Resource_8be4f")])
+metadata/_custom_type_script = "uid://dh4ocdw785wgm"

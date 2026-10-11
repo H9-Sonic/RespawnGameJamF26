@@ -54,7 +54,7 @@ public partial class GameMaster : Node2D
 	[Export]
 	float healthScalePerWave = 0.15f;
 	[Export]
-	float damageScalePerWave = 0.10f;
+	float damageScalePerWave = 0.15f;
 	
 	[ExportGroup("Healing")]
 	[Export(PropertyHint.Range, "0,1,0.05")]

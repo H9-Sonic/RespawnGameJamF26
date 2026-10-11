@@ -43,7 +43,9 @@ Left Click - Attack
 Space - Dash
 
 Defeat All Enemies in the Wave!
-A Shop Appears at the end of Each Wave!"
+A Shop Appears at the end of Each Wave!
+
+Items in the shop can be locked until the next Wave"
 fit_content = true
 
 [node name="BackButton" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=638655490]
@@ -53,6 +55,5 @@ size_flags_vertical = 10
 theme_override_font_sizes/font_size = 32
 text = "Back To Title"
 script = ExtResource("2_x5ho3")
-theme_override_font_sizes/font_size = 32
 
 [connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/BackButton" to="PanelContainer/HBoxContainer/VBoxContainer/BackButton" method="_on_pressed"]

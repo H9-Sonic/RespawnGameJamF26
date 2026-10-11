@@ -19,7 +19,7 @@ public partial class PlayerStats : Resource
 	[Export] public float BaseRange { get; set; } = 40f;          // length of the hitbox in pixels
 
 	[ExportGroup("Dash")]
-	[Export] public float BaseDashSpeed { get; set; } = 350f;
+	[Export] public float BaseDashSpeed { get; set; } = 550f;
 	[Export] public float BaseDashDuration { get; set; } = 0.15f; // seconds
 	[Export] public float BaseDashCooldown { get; set; } = 2.0f;  // seconds
 

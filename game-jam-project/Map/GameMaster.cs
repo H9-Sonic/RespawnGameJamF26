@@ -55,6 +55,10 @@ public partial class GameMaster : Node2D
 	float healthScalePerWave = 0.15f;
 	[Export]
 	float damageScalePerWave = 0.10f;
+	
+	[ExportGroup("Healing")]
+	[Export(PropertyHint.Range, "0,1,0.05")]
+	float waveHealFraction = 0.2f;  
 
 	enum Phase {Starting, Spawning, Fighting, Shop, Over }
 
@@ -157,6 +161,9 @@ public partial class GameMaster : Node2D
 
 	void EndWave()
 	{
+		if (!player.IsDead)
+		player.Stats.Heal(player.Stats.MaxHealth * waveHealFraction);
+
 		if (!shop.Open(_wave, _coinsThisWave, _coins))
 		{
 			StartWave();   // nothing to sell, go straight to the next wave

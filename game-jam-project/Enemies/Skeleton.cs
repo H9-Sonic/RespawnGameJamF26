@@ -21,6 +21,11 @@ public partial class Skeleton : CharacterBody2D, IDamageable
 	float knockbackForce = 250.0f;
 	[Export]
 	float knockbackDuration = 0.2f;
+	
+	[ExportGroup("Health Bar")]
+	[Export] Vector2 healthBarOffset = new Vector2(0f, -14f);
+	[Export] float healthBarWidth = 16f;
+	HealthBar healthBar;
 
 	bool dead;
 
@@ -51,12 +56,14 @@ public partial class Skeleton : CharacterBody2D, IDamageable
 		Nav2D = GetNode<NavigationAgent2D>("NavigationAgent2D");
 		Player = GetParent().GetNode<CharacterBody2D>("Player");
 		health = maxHealth;
+		healthBar = new HealthBar { Position = healthBarOffset, Width = healthBarWidth, HideWhenFull = true };
+		AddChild(healthBar);
 		attack_speed = 1.0f / aps;
 		attack_cooldown = attack_speed;
 	}
 
-    public override void _PhysicsProcess(double delta)
-    { 
+	public override void _PhysicsProcess(double delta)
+	{ 
 		if(dead)
 			return;
 
@@ -109,7 +116,7 @@ public partial class Skeleton : CharacterBody2D, IDamageable
 		{
 			skelAnim.ChangeOnDir(Velocity);
 		}
-    }
+	}
 
 	public void Attack()
 	{
@@ -126,6 +133,7 @@ public partial class Skeleton : CharacterBody2D, IDamageable
 			return;
 
 		health -= amount;
+		UpdateHealthBar();
 		knowckbackVelocity = (GlobalPosition - sourcePos).Normalized() * knockbackForce;
 		knockbackTimeLeft = knockbackDuration;
 		GD.Print($"Skeleton took damage: {amount}, remaining health: {health}");
@@ -146,5 +154,11 @@ public partial class Skeleton : CharacterBody2D, IDamageable
 		maxHealth *= healthMult;
 		health = maxHealth;
 		damage *= damageMult;
+		UpdateHealthBar();
+	}
+	void UpdateHealthBar()
+	{
+		if (IsInstanceValid(healthBar))
+			healthBar.SetValue(health, maxHealth);
 	}
 }

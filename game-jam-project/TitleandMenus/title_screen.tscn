@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dnppgshaud5v"]
+
+[ext_resource type="Theme" uid="uid://b5iorxo3m0h7q" path="res://UiTheme.tres" id="1_0oxcp"]
+[ext_resource type="Script" uid="uid://c3tjwo1p2krgi" path="res://TitleandMenus/PlayButton.cs" id="2_udcp0"]
+[ext_resource type="Script" uid="uid://1b3orjlrefai" path="res://TitleandMenus/HelpButton.cs" id="3_b7x2t"]
+[ext_resource type="Script" uid="uid://coq1fonhnumah" path="res://TitleandMenus/CreditsButton.cs" id="4_k2j4b"]
+[ext_resource type="Script" uid="uid://dwt3mrxhhlj7d" path="res://TitleandMenus/QuitButton.cs" id="5_god1q"]
+
+[node name="TitleScreen" type="Control" unique_id=739684042]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0oxcp")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=651004787]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=439676988]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Title" type="RichTextLabel" parent="PanelContainer/VBoxContainer" unique_id=1455372518]
+layout_mode = 2
+size_flags_vertical = 0
+bbcode_enabled = true
+text = "[wave] Dungeon Defender
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="PlayButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=2128377897]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Play"
+script = ExtResource("2_udcp0")
+
+[node name="HelpButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1658933967]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Help"
+script = ExtResource("3_b7x2t")
+
+[node name="CreditsButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=996518053]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Credits"
+script = ExtResource("4_k2j4b")
+
+[node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1949714622]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+script = ExtResource("5_god1q")
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/PlayButton" to="PanelContainer/VBoxContainer/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HelpButton" to="PanelContainer/VBoxContainer/HelpButton" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/CreditsButton" to="PanelContainer/VBoxContainer/CreditsButton" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/QuitButton" to="PanelContainer/VBoxContainer/QuitButton" method="_on_pressed"]

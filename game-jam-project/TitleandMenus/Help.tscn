@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://b4ogx2t8ooy3s"]
+
+[ext_resource type="Theme" uid="uid://b5iorxo3m0h7q" path="res://UiTheme.tres" id="1_ge2ie"]
+[ext_resource type="Script" uid="uid://cjjol2ltr3uid" path="res://TitleandMenus/BackButton.cs" id="2_x5ho3"]
+
+[node name="Control" type="Control" unique_id=1894339131]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ge2ie")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1134784282]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1504270458]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=1170217520]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=1716813579]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Help Menu
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=1774483063]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "WASD - Movement
+Left Click - Attack
+Space - Dash
+
+Defeat All Enemies in the Wave!
+A Shop Appears at the end of Each Wave!"
+fit_content = true
+
+[node name="BackButton" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=638655490]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 32
+text = "Back To Title"
+script = ExtResource("2_x5ho3")
+theme_override_font_sizes/font_size = 32
+
+[connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/BackButton" to="PanelContainer/HBoxContainer/VBoxContainer/BackButton" method="_on_pressed"]

@@ -372,6 +372,8 @@ animations = [{
 size = Vector2(22.5, 23)
 
 [node name="Skeleton" type="CharacterBody2D" unique_id=551008024 node_paths=PackedStringArray("skelAnim")]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_gk8ng")
 skelAnim = NodePath("AnimatedSprite2D")
 
@@ -388,6 +390,8 @@ script = ExtResource("7_4o6mh")
 debug_enabled = true
 
 [node name="AttackRange" type="Area2D" parent="." unique_id=820455380]
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange" unique_id=176729739]
 position = Vector2(-2.25, 5)

@@ -1,15 +1,19 @@
 [gd_scene format=3 uid="uid://bxr722u545xor"]
 
 [ext_resource type="PackedScene" uid="uid://bfe51swgj4cph" path="res://Map/test_map.tscn" id="1_1tnmm"]
+[ext_resource type="Script" uid="uid://c1yf4tvgyre2l" path="res://Map/GameMaster.cs" id="1_lmrd3"]
 [ext_resource type="PackedScene" uid="uid://dpkm2mginudre" path="res://Enemies/enemy.tscn" id="2_lmrd3"]
 [ext_resource type="PackedScene" uid="uid://5ursa0tx3jem" path="res://Player/player.tscn" id="3_lmrd3"]
+[ext_resource type="PackedScene" uid="uid://6v7bp7bytk82" path="res://Shop/ShopMenu.tscn" id="5_vf1ww"]
 
-[node name="GameMaster" type="Node2D" unique_id=1429793158]
+[node name="GameMaster" type="Node2D" unique_id=1429793158 node_paths=PackedStringArray("player", "spawnPointsParent", "shop")]
+script = ExtResource("1_lmrd3")
+skeletonScene = ExtResource("2_lmrd3")
+player = NodePath("Player")
+spawnPointsParent = NodePath("SpawnPoints")
+shop = NodePath("CanvasLayer/ShopMenu")
 
 [node name="TestMap" parent="." unique_id=503565509 instance=ExtResource("1_1tnmm")]
-
-[node name="Skeleton" parent="." unique_id=551008024 instance=ExtResource("2_lmrd3")]
-position = Vector2(378, 262)
 
 [node name="Player" parent="." unique_id=1514779434 instance=ExtResource("3_lmrd3")]
 position = Vector2(530, 313)
@@ -17,3 +21,37 @@ position = Vector2(530, 313)
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=642527630]
 position = Vector2(-2, 11)
 zoom = Vector2(2, 2)
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1359296579]
+position = Vector2(528, 325)
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints" unique_id=1104834120]
+position = Vector2(-247, -174)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPoints" unique_id=1626145841]
+position = Vector2(1, -177)
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPoints" unique_id=670739766]
+position = Vector2(236, -177)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPoints" unique_id=564029786]
+position = Vector2(-277, -3)
+
+[node name="Marker2D5" type="Marker2D" parent="SpawnPoints" unique_id=188926269]
+position = Vector2(-266, 224)
+
+[node name="Marker2D6" type="Marker2D" parent="SpawnPoints" unique_id=570664256]
+position = Vector2(-2, 215)
+
+[node name="Marker2D7" type="Marker2D" parent="SpawnPoints" unique_id=734903958]
+position = Vector2(257, 219)
+
+[node name="Marker2D8" type="Marker2D" parent="SpawnPoints" unique_id=436145064]
+position = Vector2(274, -2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1149730610]
+
+[node name="ShopMenu" parent="CanvasLayer" unique_id=1291688526 node_paths=PackedStringArray("PlayerNode") instance=ExtResource("5_vf1ww")]
+offset_right = 1152.0
+offset_bottom = 648.0
+PlayerNode = NodePath("../../Player")

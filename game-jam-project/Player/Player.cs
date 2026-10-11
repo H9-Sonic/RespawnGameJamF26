@@ -37,6 +37,8 @@ public partial class Player : CharacterBody2D, IDamageable
 	private float _attackAnimLength = 1f;   // read from the Attack animation in _Ready
 	private bool _invulnerable;
 
+	public bool IsDead => _state == State.Dead; //added so gamemaster knows players death
+
 	public override void _Ready()
 	{
 		// Duplicate so multiple players/enemies never share one stats object.
@@ -154,7 +156,7 @@ public partial class Player : CharacterBody2D, IDamageable
 		// Stretch/squash the animation so one swing lasts exactly 1 / AttackSpeed seconds.
 		PlayAnim(AnimAttack, _attackAnimLength * Stats.AttackSpeed);
 	}
-
+/*
 	private void OnFrameChanged()
 	{
 		if (_state != State.Attacking) return;
@@ -163,6 +165,23 @@ public partial class Player : CharacterBody2D, IDamageable
 
 		foreach (Node2D body in _hitbox.GetOverlappingBodies())
 		{
+			if (body is IDamageable target)
+				target.TakeDamage(Stats.Damage, GlobalPosition);
+		}
+	}
+	*/ //debugging version below vvvv change back to prev if i forgor
+	private void OnFrameChanged()
+	{
+		if (_state != State.Attacking) return;
+		if (_sprite.Animation.ToString() != AnimAttack) return;
+		if (_sprite.Frame != AttackHitFrame) return;
+
+		var bodies = _hitbox.GetOverlappingBodies();
+		GD.Print($"Hit frame reached, overlapping: {bodies.Count}");
+
+		foreach (Node2D body in bodies)
+		{
+			GD.Print($"  {body.Name} damageable: {body is IDamageable}");
 			if (body is IDamageable target)
 				target.TakeDamage(Stats.Damage, GlobalPosition);
 		}

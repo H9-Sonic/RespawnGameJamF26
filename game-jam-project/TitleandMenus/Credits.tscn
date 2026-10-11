@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://ba1vcxhon7kna"]
+
+[ext_resource type="Theme" uid="uid://b5iorxo3m0h7q" path="res://UiTheme.tres" id="1_onkb8"]
+[ext_resource type="Script" uid="uid://cjjol2ltr3uid" path="res://TitleandMenus/BackButton.cs" id="2_p645p"]
+
+[node name="Control" type="Control" unique_id=1415553660]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_onkb8")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1624688251]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1312296314]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=924688081]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=662095188]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Credits"
+fit_content = true
+autowrap_mode = 0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=1411708756]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+text = "Dungeon Asset Pack - Pixel Poem
+
+Tiny RPG Charater Asset Pack - Zerie
+"
+fit_content = true
+
+[node name="BackButton" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=716147589]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 32
+text = "Back to Title"
+script = ExtResource("2_p645p")
+
+[connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/BackButton" to="PanelContainer/HBoxContainer/VBoxContainer/BackButton" method="_on_pressed"]

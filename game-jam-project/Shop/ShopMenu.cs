@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Godot;
+using System;
 
 public partial class ShopMenu : Control
 {
@@ -7,14 +8,27 @@ public partial class ShopMenu : Control
 	[Export] public PackedScene CardScene { get; set; }        // ShopCard.tscn
 	[Export] public Container CardContainer { get; set; }
 	[Export] public Button CloseButton { get; set; }
+	[Export]
+	public Label TitleLabel {get; set; }
+	[Export]
+	public Label CoinsLabel {get; set; }
+	[Export]
+	public Label TimerLabel {get; set;}
 	[Export] public Godot.Collections.Array<Upgrade> UpgradePool { get; set; } = new();
 	[Export] public int ChoiceCount { get; set; } = 3;
 	[Export] public bool RemoveChosenFromPool { get; set; } = false;
 	[Export] public bool OpenOnReady { get; set; } = false;    // handy for testing
 
+	public event Action<int> CoinsSpent;
+
+	public event Action Closed;
+
 	// What each slot currently holds, and whether the player locked it.
 	private Upgrade[] _slots;
 	private bool[] _locked;
+	private int _coins;
+	private int _earned;
+	private int _wave;
 
 	public override void _Ready()
 	{
@@ -38,12 +52,18 @@ public partial class ShopMenu : Control
 		}
 	}
 
-	public void Open()
+	public void Open(int wave, int earned, int coins)
 	{
+		GD.Print($"Shop.Open called. visible{Visible}, pool={UpgradePool.Count}");
 		if (Visible || UpgradePool.Count == 0) return;
+
+		_wave = wave;
+		_earned = earned;
+		_coins = coins;
 
 		RollSlots();
 		BuildCards();
+		RefreshLabels();
 
 		Visible = true;
 		GetTree().Paused = true;
@@ -53,6 +73,15 @@ public partial class ShopMenu : Control
 	{
 		Visible = false;
 		GetTree().Paused = false;
+		Closed?.Invoke();
+	}
+
+	public void SetTimer(double seconds) => TimerLabel.Text = $"Next Wave in {Mathf.CeilToInt(seconds)}s";
+
+	private void RefreshLabels()
+	{
+		TitleLabel.Text = $"Wave {_wave} cleared!";
+		CoinsLabel.Text = $"Coins earned this wave: {_earned} | Total: {_coins}";
 	}
 
 	// Keep locked slots, reroll the rest without duplicates.
@@ -105,6 +134,9 @@ public partial class ShopMenu : Control
 			card.Setup(i, _slots[i], _locked[i]);
 			card.Chosen += OnChosen;
 			card.LockToggled += OnLockToggled;
+
+			card.NameLabel.Text += $" ({_slots[i].Cost} coins)";
+			card.SelectButton.Disabled = _coins < _slots[i].Cost;
 			first ??= card;
 		}
 
@@ -116,6 +148,10 @@ public partial class ShopMenu : Control
 	private void OnChosen(int slot)
 	{
 		Upgrade upgrade = _slots[slot];
+		if(upgrade == null || _coins < upgrade.Cost) return;
+
+		_coins -= upgrade.Cost;
+		CoinsSpent?.Invoke(upgrade.Cost);
 		PlayerNode.Stats.AddUpgrade(upgrade);
 
 		if (RemoveChosenFromPool) UpgradePool.Remove(upgrade);
@@ -124,6 +160,7 @@ public partial class ShopMenu : Control
 		_locked[slot] = false;
 		_slots[slot] = null;
 
-		Close();
+		BuildCards();
+		RefreshLabels();
 	}
 }

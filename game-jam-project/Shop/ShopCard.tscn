@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://boboroufx8i5w" path="res://Shop/ShopCard.cs" id="1_2bf0n"]
 
-[node name="ShopCard" type="PanelContainer" unique_id=1489847266 node_paths=PackedStringArray("NameLabel", "DescriptionLabel", "SelectButton", "LockButton")]
-custom_minimum_size = Vector2(160, 220)
+[node name="ShopCard" type="PanelContainer" unique_id=1489847266 node_paths=PackedStringArray("NameLabel", "DescriptionLabel", "IconRect", "SelectButton", "LockButton")]
+custom_minimum_size = Vector2(160, 0)
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_2bf0n")
 NameLabel = NodePath("VBoxContainer/NameLabel")
 DescriptionLabel = NodePath("VBoxContainer/DescriptionLabel")
+IconRect = NodePath("VBoxContainer/IconRect")
 SelectButton = NodePath("VBoxContainer/SelectButton")
 LockButton = NodePath("VBoxContainer/LockButton")
 
@@ -16,15 +17,20 @@ LockButton = NodePath("VBoxContainer/LockButton")
 layout_mode = 2
 
 [node name="IconRect" type="TextureRect" parent="VBoxContainer" unique_id=675122116]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 expand_mode = 1
+stretch_mode = 5
 
 [node name="NameLabel" type="Label" parent="VBoxContainer" unique_id=1671857769]
+custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
+autowrap_mode = 3
 
 [node name="DescriptionLabel" type="Label" parent="VBoxContainer" unique_id=1721384477]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+autowrap_mode = 3
 
 [node name="SelectButton" type="Button" parent="VBoxContainer" unique_id=660878425]
 layout_mode = 2

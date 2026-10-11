@@ -1,10 +1,47 @@
 [gd_scene format=3 uid="uid://6v7bp7bytk82"]
 
 [ext_resource type="Script" uid="uid://ynnd3pgcrrrg" path="res://Shop/ShopMenu.cs" id="1_kopr2"]
+[ext_resource type="PackedScene" uid="uid://xyfyq2r8l3of" path="res://Shop/ShopCard.tscn" id="2_fs3t6"]
+[ext_resource type="Script" uid="uid://dh4ocdw785wgm" path="res://Upgrades/Upgrade.cs" id="2_jx4i6"]
+[ext_resource type="Script" uid="uid://dnrvcarjcbghf" path="res://Player/StatModifier.cs" id="3_fs3t6"]
 
-[sub_resource type="PackedScene" id="PackedScene_kopr2"]
+[sub_resource type="Resource" id="Resource_2wmoh"]
+script = ExtResource("2_jx4i6")
+DisplayName = "Damage Increase"
+Description = "+5 Damage per Upgrade"
+metadata/_custom_type_script = "uid://dh4ocdw785wgm"
 
-[node name="ShopMenu" type="Control" unique_id=1291688526 node_paths=PackedStringArray("PlayerNode", "CardContainer", "CloseButton")]
+[sub_resource type="Resource" id="Resource_j7501"]
+script = ExtResource("2_jx4i6")
+DisplayName = "Speed Upgrade"
+Description = "Increases Move Speed by 15% per Upgrade"
+metadata/_custom_type_script = "uid://dh4ocdw785wgm"
+
+[sub_resource type="Resource" id="Resource_njbit"]
+script = ExtResource("2_jx4i6")
+DisplayName = "Attack Speed"
+Description = "Increases Attack Speed by 20% per Upgrade"
+metadata/_custom_type_script = "uid://dh4ocdw785wgm"
+
+[sub_resource type="Resource" id="Resource_fs3t6"]
+script = ExtResource("2_jx4i6")
+DisplayName = "Attack Range"
+Description = "Increase Attack Range by 25% per Upgrade"
+metadata/_custom_type_script = "uid://dh4ocdw785wgm"
+
+[sub_resource type="Resource" id="Resource_yidgw"]
+script = ExtResource("2_jx4i6")
+DisplayName = "Health Upgrade"
+Description = "Increase Max Health by 20 Points"
+metadata/_custom_type_script = "uid://dh4ocdw785wgm"
+
+[sub_resource type="Resource" id="Resource_6lxwb"]
+script = ExtResource("2_jx4i6")
+DisplayName = "Dash Cooldown"
+Description = "Dash can be used 20% Sooner!"
+metadata/_custom_type_script = "uid://dh4ocdw785wgm"
+
+[node name="ShopMenu" type="Control" unique_id=1291688526 node_paths=PackedStringArray("CardContainer", "CloseButton", "TitleLabel", "CoinsLabel", "TimerLabel")]
 process_mode = 3
 custom_minimum_size = Vector2(1152, 648)
 layout_mode = 3
@@ -12,10 +49,14 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_kopr2")
-PlayerNode = NodePath("")
-CardScene = SubResource("PackedScene_kopr2")
-CardContainer = NodePath("")
+CardScene = ExtResource("2_fs3t6")
+CardContainer = NodePath("Center/PanelContainer/VBoxContainer/HBoxContainer")
 CloseButton = NodePath("Center/PanelContainer/VBoxContainer/CloseButton")
+TitleLabel = NodePath("Center/PanelContainer/VBoxContainer/Title")
+CoinsLabel = NodePath("Center/PanelContainer/VBoxContainer/CoinsLabel")
+TimerLabel = NodePath("Center/PanelContainer/VBoxContainer/TimerLabel")
+UpgradePool = Array[ExtResource("2_jx4i6")]([SubResource("Resource_2wmoh"), SubResource("Resource_j7501"), SubResource("Resource_njbit"), SubResource("Resource_fs3t6"), SubResource("Resource_yidgw"), SubResource("Resource_6lxwb")])
+ChoiceCount = 6
 OpenOnReady = true
 
 [node name="Dim" type="ColorRect" parent="." unique_id=930073745]
@@ -42,6 +83,12 @@ layout_mode = 2
 layout_mode = 2
 text = "Shop"
 horizontal_alignment = 1
+
+[node name="CoinsLabel" type="Label" parent="Center/PanelContainer/VBoxContainer" unique_id=1571234631]
+layout_mode = 2
+
+[node name="TimerLabel" type="Label" parent="Center/PanelContainer/VBoxContainer" unique_id=805051116]
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Center/PanelContainer/VBoxContainer" unique_id=947154394]
 layout_mode = 2

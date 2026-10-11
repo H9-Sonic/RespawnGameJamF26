@@ -12,7 +12,7 @@ metadata/_custom_type_script = "uid://dnrvcarjcbghf"
 
 [resource]
 script = ExtResource("3_7lxps")
-DisplayName = "Charge Gem"
+DisplayName = "Charge Gem 10 coins"
 Description = "Decreases Dash Cooldown"
 Icon = ExtResource("1_8irgg")
 Modifiers = Array[ExtResource("2_5eeae")]([SubResource("Resource_8be4f")])

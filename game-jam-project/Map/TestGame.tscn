@@ -6,6 +6,24 @@
 [ext_resource type="PackedScene" uid="uid://5ursa0tx3jem" path="res://Player/player.tscn" id="3_lmrd3"]
 [ext_resource type="PackedScene" uid="uid://6v7bp7bytk82" path="res://Shop/ShopMenu.tscn" id="5_vf1ww"]
 [ext_resource type="PackedScene" path="res://TitleandMenus/GameOverMenu.tscn" id="6_gameover"]
+[ext_resource type="Script" uid="uid://dh4ocdw785wgm" path="res://Upgrades/Upgrade.cs" id="6_rms71"]
+[ext_resource type="Resource" uid="uid://x4v3q1q74h10" path="res://Upgrades/AttackSpeed1.25.tres" id="7_y067q"]
+[ext_resource type="Resource" uid="uid://4d2v3yyfusui" path="res://Upgrades/AttackSpeed10%.tres" id="8_xhy0i"]
+[ext_resource type="Resource" uid="uid://dhgls210udd1q" path="res://Upgrades/AttackSpeed+0.5.tres" id="9_5jfka"]
+[ext_resource type="Resource" uid="uid://baks3k4bfl1rg" path="res://Upgrades/Damage1.5x.tres" id="10_wpqgc"]
+[ext_resource type="Resource" uid="uid://cdnyuba8dg7yw" path="res://Upgrades/Damage10%.tres" id="11_ta0k7"]
+[ext_resource type="Resource" uid="uid://cfptkmf32gthx" path="res://Upgrades/Damage+2.tres" id="12_y8xpt"]
+[ext_resource type="Resource" uid="uid://ls2bwhr1ovju" path="res://Upgrades/DashCharge.tres" id="13_0txab"]
+[ext_resource type="Resource" uid="uid://cxfhxvyc8udux" path="res://Upgrades/Health1.25x.tres" id="14_815jx"]
+[ext_resource type="Resource" uid="uid://cfsbfwx4orskq" path="res://Upgrades/Health10%.tres" id="15_c8lwc"]
+[ext_resource type="Resource" uid="uid://1o2cksdc6ick" path="res://Upgrades/Health+25.tres" id="16_fc7ir"]
+[ext_resource type="Resource" uid="uid://cm7x5xifqtv3o" path="res://Upgrades/MoveSpeed1.15.tres" id="17_22em7"]
+[ext_resource type="Resource" uid="uid://ht8v6cs7hkc4" path="res://Upgrades/MoveSpeed10%.tres" id="18_h58tu"]
+[ext_resource type="Resource" uid="uid://c7b6ixc1wbiah" path="res://Upgrades/MoveSpeed+20.tres" id="19_fhcu4"]
+[ext_resource type="Resource" uid="uid://co71sy7p54r0i" path="res://Upgrades/Range1.25x.tres" id="20_6el4v"]
+[ext_resource type="Resource" uid="uid://tcl73n3abp5h" path="res://Upgrades/Range10%.tres" id="21_1cgjx"]
+[ext_resource type="Resource" uid="uid://bbrcdhpsshp86" path="res://Upgrades/Range+5.tres" id="22_85wkh"]
+[ext_resource type="Resource" uid="uid://bkl2r5cq3h3fb" path="res://Upgrades/CoinDrop15%.tres" id="23_eje7e"]
 
 [node name="GameMaster" type="Node2D" unique_id=1429793158 node_paths=PackedStringArray("player", "spawnPointsParent", "shop", "gameOver", "waveLabel", "coinsLabel")]
 script = ExtResource("1_lmrd3")
@@ -55,11 +73,11 @@ position = Vector2(274, -2)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1149730610]
 
-[node name="ShopMenu" parent="CanvasLayer" unique_id=1291688526 node_paths=PackedStringArray("PlayerNode", "CoinsLabel") instance=ExtResource("5_vf1ww")]
+[node name="ShopMenu" parent="CanvasLayer" unique_id=1291688526 node_paths=PackedStringArray("PlayerNode") instance=ExtResource("5_vf1ww")]
 offset_right = 1152.0
 offset_bottom = 648.0
 PlayerNode = NodePath("../../Player")
-CoinsLabel = NodePath("../../CanvasLayer2/CoinLabel")
+UpgradePool = Array[ExtResource("6_rms71")]([ExtResource("7_y067q"), ExtResource("8_xhy0i"), ExtResource("9_5jfka"), ExtResource("10_wpqgc"), ExtResource("11_ta0k7"), ExtResource("12_y8xpt"), ExtResource("13_0txab"), ExtResource("14_815jx"), ExtResource("15_c8lwc"), ExtResource("16_fc7ir"), ExtResource("17_22em7"), ExtResource("18_h58tu"), ExtResource("19_fhcu4"), ExtResource("20_6el4v"), ExtResource("21_1cgjx"), ExtResource("22_85wkh"), ExtResource("23_eje7e")])
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1619751251]
 
@@ -79,7 +97,7 @@ grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="GameOverLayer" type="CanvasLayer" parent="."]
+[node name="GameOverLayer" type="CanvasLayer" parent="." unique_id=1554929592]
 layer = 10
 
-[node name="GameOverMenu" parent="GameOverLayer" instance=ExtResource("6_gameover")]
+[node name="GameOverMenu" parent="GameOverLayer" unique_id=2143599421 instance=ExtResource("6_gameover")]

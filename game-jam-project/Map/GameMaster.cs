@@ -106,7 +106,7 @@ public partial class GameMaster : Node2D
 				break;
 
 			case Phase.Spawning:
-			    _timer -= delta;
+				_timer -= delta;
 				if(_timer <= 0)
 				{
 					SpawnSkeleton();
@@ -157,11 +157,14 @@ public partial class GameMaster : Node2D
 
 	void EndWave()
 	{
+		if (!shop.Open(_wave, _coinsThisWave, _coins))
+		{
+			StartWave();   // nothing to sell, go straight to the next wave
+			return;
+		}
 		_phase = Phase.Shop;
 		_timer = ShopTimer;
-		shop.Open(_wave, _coinsThisWave, _coins);
 		shop.SetTimer(_timer);
-
 	}
 
 	void SpawnSkeleton()

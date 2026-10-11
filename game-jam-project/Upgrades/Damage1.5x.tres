@@ -12,8 +12,9 @@ metadata/_custom_type_script = "uid://dnrvcarjcbghf"
 
 [resource]
 script = ExtResource("3_de0b1")
-DisplayName = "Clockin' Candy"
+DisplayName = "Clockin' Candy 15 coins"
 Description = "Multiply Damage by 1.5"
 Icon = ExtResource("1_o8ijh")
 Modifiers = Array[ExtResource("2_0vxws")]([SubResource("Resource_0afw6")])
+Cost = 15
 metadata/_custom_type_script = "uid://dh4ocdw785wgm"

@@ -12,8 +12,9 @@ metadata/_custom_type_script = "uid://dnrvcarjcbghf"
 
 [resource]
 script = ExtResource("3_wesdp")
-DisplayName = "Fast Fiber"
+DisplayName = "Fast Fiber 5 coins"
 Description = "Increase Attack Speed"
 Icon = ExtResource("1_cp1lp")
 Modifiers = Array[ExtResource("2_ikbh5")]([SubResource("Resource_8be4f")])
+Cost = 5
 metadata/_custom_type_script = "uid://dh4ocdw785wgm"

@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://dnrvcarjcbghf"
 
 [resource]
 script = ExtResource("3_j512y")
-DisplayName = "Punctual Poultry"
+DisplayName = "Punctual Poultry 10 coins"
 Description = "Increase Attack Speed By 10%"
 Icon = ExtResource("1_yxrlk")
 Modifiers = Array[ExtResource("2_o8a1p")]([SubResource("Resource_8be4f")])

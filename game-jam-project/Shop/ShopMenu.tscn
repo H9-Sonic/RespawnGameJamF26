@@ -19,9 +19,9 @@
 [ext_resource type="Resource" uid="uid://co71sy7p54r0i" path="res://Upgrades/Range1.25x.tres" id="17_58sjm"]
 [ext_resource type="Resource" uid="uid://tcl73n3abp5h" path="res://Upgrades/Range10%.tres" id="18_ov3d5"]
 [ext_resource type="Resource" uid="uid://bbrcdhpsshp86" path="res://Upgrades/Range+5.tres" id="19_fjdmx"]
-[ext_resource type="Resource" path="res://Upgrades/CoinDrop+0.2.tres" id="20_coinflat"]
-[ext_resource type="Resource" path="res://Upgrades/CoinDrop15%.tres" id="21_coinpct"]
-[ext_resource type="Resource" path="res://Upgrades/CoinDrop1.5x.tres" id="22_coinmult"]
+[ext_resource type="Resource" uid="uid://th8r12onyu6c" path="res://Upgrades/CoinDrop+0.2.tres" id="20_coinflat"]
+[ext_resource type="Resource" uid="uid://bkl2r5cq3h3fb" path="res://Upgrades/CoinDrop15%.tres" id="21_coinpct"]
+[ext_resource type="Resource" uid="uid://bgf5fjyigvfcs" path="res://Upgrades/CoinDrop1.5x.tres" id="22_coinmult"]
 
 [node name="ShopMenu" type="Control" unique_id=1291688526 node_paths=PackedStringArray("CardContainer", "CloseButton", "TitleLabel", "CoinsLabel", "TimerLabel")]
 process_mode = 3
@@ -63,14 +63,17 @@ layout_mode = 2
 text = "Shop"
 horizontal_alignment = 1
 
-[node name="CoinsLabel" type="Label" parent="Center/PanelContainer/VBoxContainer" unique_id=1571234631]
-layout_mode = 2
-
 [node name="TimerLabel" type="Label" parent="Center/PanelContainer/VBoxContainer" unique_id=805051116]
 layout_mode = 2
+horizontal_alignment = 1
+
+[node name="CoinsLabel" type="Label" parent="Center/PanelContainer/VBoxContainer" unique_id=1571234631]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Center/PanelContainer/VBoxContainer" unique_id=947154394]
 layout_mode = 2
+theme_override_constants/separation = 60
 
 [node name="CloseButton" type="Button" parent="Center/PanelContainer/VBoxContainer" unique_id=900396364]
 layout_mode = 2

@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Upgrade" format=3]
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://bkl2r5cq3h3fb"]
 
-[ext_resource type="Texture2D" uid="uid://yoskymvbny4s" path="res://Assets/2D Pixel Dungeon Asset Pack v2.0/items and trap_animation/coin/coin_1.png" id="1_icon"]
+[ext_resource type="Texture2D" uid="uid://cngscivmpfj6v" path="res://Assets/Upgrade Assets/CoinDropPercent.png" id="1_03aje"]
 [ext_resource type="Script" uid="uid://dnrvcarjcbghf" path="res://Player/StatModifier.cs" id="2_mod"]
 [ext_resource type="Script" uid="uid://dh4ocdw785wgm" path="res://Upgrades/Upgrade.cs" id="3_upg"]
 
@@ -13,8 +13,9 @@ metadata/_custom_type_script = "uid://dnrvcarjcbghf"
 
 [resource]
 script = ExtResource("3_upg")
-DisplayName = "Golden Gumdrop"
+DisplayName = "Lucky Gem 20 coins"
 Description = "Increase Coin Drop Chance by 15%"
-Icon = ExtResource("1_icon")
+Icon = ExtResource("1_03aje")
 Modifiers = Array[ExtResource("2_mod")]([SubResource("Resource_coin1")])
+Cost = 20
 metadata/_custom_type_script = "uid://dh4ocdw785wgm"

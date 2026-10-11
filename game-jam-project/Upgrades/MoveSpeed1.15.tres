@@ -13,8 +13,9 @@ metadata/_custom_type_script = "uid://dnrvcarjcbghf"
 
 [resource]
 script = ExtResource("3_ngjw8")
-DisplayName = "Caffeine Boost"
+DisplayName = "Caffeine Boost 15 coins"
 Description = "Multiply Move Speed by 1.15"
 Icon = ExtResource("1_gy7ga")
 Modifiers = Array[ExtResource("2_xwatj")]([SubResource("Resource_8be4f")])
+Cost = 15
 metadata/_custom_type_script = "uid://dh4ocdw785wgm"

@@ -12,8 +12,9 @@ metadata/_custom_type_script = "uid://dnrvcarjcbghf"
 
 [resource]
 script = ExtResource("3_6pekk")
-DisplayName = "Boom Berries"
+DisplayName = "Boom Berries 5 coins"
 Description = "Increases Attack Range "
 Icon = ExtResource("1_ujt73")
 Modifiers = Array[ExtResource("2_n3to2")]([SubResource("Resource_8be4f")])
+Cost = 5
 metadata/_custom_type_script = "uid://dh4ocdw785wgm"

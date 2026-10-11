@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://dnrvcarjcbghf"
 
 [resource]
 script = ExtResource("3_pn1sh")
-DisplayName = "Sugar Rush"
+DisplayName = "Sugar Rush 10 coins"
 Description = "Increase Move Speed by 10%"
 Icon = ExtResource("1_osepx")
 Modifiers = Array[ExtResource("2_lmmtc")]([SubResource("Resource_8be4f")])

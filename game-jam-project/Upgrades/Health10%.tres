@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://cfsbfwx4orskq"]
 
-[ext_resource type="Texture2D" uid="uid://cgaxjyvnn875d" path="res://Assets/HealthPercent.png" id="1_4irai"]
+[ext_resource type="Texture2D" uid="uid://cgaxjyvnn875d" path="res://Assets/Upgrade Assets/HealthPercent.png" id="1_4irai"]
 [ext_resource type="Script" uid="uid://dnrvcarjcbghf" path="res://Player/StatModifier.cs" id="1_d3114"]
 [ext_resource type="Script" uid="uid://dh4ocdw785wgm" path="res://Upgrades/Upgrade.cs" id="2_4irai"]
 

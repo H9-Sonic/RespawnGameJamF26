@@ -23,6 +23,10 @@ window/stretch/aspect="expand"
 
 project/assembly_name="Game Jam Project"
 
+[global_group]
+
+Player=""
+
 [input]
 
 left={

@@ -1,9 +1,26 @@
 [gd_scene format=3 uid="uid://6v7bp7bytk82"]
 
 [ext_resource type="Script" uid="uid://ynnd3pgcrrrg" path="res://Shop/ShopMenu.cs" id="1_kopr2"]
-[ext_resource type="PackedScene" uid="uid://xyfyq2r8l3of" path="res://Shop/ShopCard.tscn" id="2_pw2hh"]
+[ext_resource type="PackedScene" uid="uid://xyfyq2r8l3of" path="res://Shop/ShopCard.tscn" id="2_fs3t6"]
+[ext_resource type="Script" uid="uid://dh4ocdw785wgm" path="res://Upgrades/Upgrade.cs" id="2_jx4i6"]
+[ext_resource type="Resource" uid="uid://x4v3q1q74h10" path="res://Upgrades/AttackSpeed1.25.tres" id="4_g86e4"]
+[ext_resource type="Resource" uid="uid://4d2v3yyfusui" path="res://Upgrades/AttackSpeed10%.tres" id="5_fnndu"]
+[ext_resource type="Resource" uid="uid://dhgls210udd1q" path="res://Upgrades/AttackSpeed+0.5.tres" id="6_uij6r"]
+[ext_resource type="Resource" uid="uid://baks3k4bfl1rg" path="res://Upgrades/Damage1.5x.tres" id="7_14fkx"]
+[ext_resource type="Resource" uid="uid://cdnyuba8dg7yw" path="res://Upgrades/Damage10%.tres" id="8_4mwsr"]
+[ext_resource type="Resource" uid="uid://cfptkmf32gthx" path="res://Upgrades/Damage+2.tres" id="9_nd2h3"]
+[ext_resource type="Resource" uid="uid://ls2bwhr1ovju" path="res://Upgrades/DashCharge.tres" id="10_f32jd"]
+[ext_resource type="Resource" uid="uid://cxfhxvyc8udux" path="res://Upgrades/Health1.25x.tres" id="11_obppw"]
+[ext_resource type="Resource" uid="uid://cfsbfwx4orskq" path="res://Upgrades/Health10%.tres" id="12_33sc2"]
+[ext_resource type="Resource" uid="uid://1o2cksdc6ick" path="res://Upgrades/Health+25.tres" id="13_dj6sk"]
+[ext_resource type="Resource" uid="uid://cm7x5xifqtv3o" path="res://Upgrades/MoveSpeed1.15.tres" id="14_ovuqo"]
+[ext_resource type="Resource" uid="uid://ht8v6cs7hkc4" path="res://Upgrades/MoveSpeed10%.tres" id="15_p8u6w"]
+[ext_resource type="Resource" uid="uid://c7b6ixc1wbiah" path="res://Upgrades/MoveSpeed+20.tres" id="16_2re6t"]
+[ext_resource type="Resource" uid="uid://co71sy7p54r0i" path="res://Upgrades/Range1.25x.tres" id="17_58sjm"]
+[ext_resource type="Resource" uid="uid://tcl73n3abp5h" path="res://Upgrades/Range10%.tres" id="18_ov3d5"]
+[ext_resource type="Resource" uid="uid://bbrcdhpsshp86" path="res://Upgrades/Range+5.tres" id="19_fjdmx"]
 
-[node name="ShopMenu" type="Control" unique_id=1291688526 node_paths=PackedStringArray("CardContainer", "CloseButton")]
+[node name="ShopMenu" type="Control" unique_id=1291688526 node_paths=PackedStringArray("CardContainer", "CloseButton", "TitleLabel", "CoinsLabel", "TimerLabel")]
 process_mode = 3
 custom_minimum_size = Vector2(1152, 648)
 layout_mode = 3
@@ -11,9 +28,13 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_kopr2")
-CardScene = ExtResource("2_pw2hh")
-CardContainer = NodePath("Center/PanelContainer/VBoxContainer/GridContainer")
+CardScene = ExtResource("2_fs3t6")
+CardContainer = NodePath("Center/PanelContainer/VBoxContainer/HBoxContainer")
 CloseButton = NodePath("Center/PanelContainer/VBoxContainer/CloseButton")
+TitleLabel = NodePath("Center/PanelContainer/VBoxContainer/Title")
+CoinsLabel = NodePath("Center/PanelContainer/VBoxContainer/CoinsLabel")
+TimerLabel = NodePath("Center/PanelContainer/VBoxContainer/TimerLabel")
+UpgradePool = Array[ExtResource("2_jx4i6")]([ExtResource("4_g86e4"), ExtResource("5_fnndu"), ExtResource("6_uij6r"), ExtResource("7_14fkx"), ExtResource("8_4mwsr"), ExtResource("9_nd2h3"), ExtResource("10_f32jd"), ExtResource("11_obppw"), ExtResource("12_33sc2"), ExtResource("13_dj6sk"), ExtResource("14_ovuqo"), ExtResource("15_p8u6w"), ExtResource("16_2re6t"), ExtResource("17_58sjm"), ExtResource("18_ov3d5"), ExtResource("19_fjdmx")])
 OpenOnReady = true
 
 [node name="Dim" type="ColorRect" parent="." unique_id=930073745]
@@ -40,9 +61,14 @@ layout_mode = 2
 text = "Shop"
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="Center/PanelContainer/VBoxContainer" unique_id=1753922933]
+[node name="CoinsLabel" type="Label" parent="Center/PanelContainer/VBoxContainer" unique_id=1571234631]
 layout_mode = 2
-columns = 3
+
+[node name="TimerLabel" type="Label" parent="Center/PanelContainer/VBoxContainer" unique_id=805051116]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Center/PanelContainer/VBoxContainer" unique_id=947154394]
+layout_mode = 2
 
 [node name="CloseButton" type="Button" parent="Center/PanelContainer/VBoxContainer" unique_id=900396364]
 layout_mode = 2

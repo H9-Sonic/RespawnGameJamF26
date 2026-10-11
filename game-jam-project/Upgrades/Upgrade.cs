@@ -8,4 +8,6 @@ public partial class Upgrade : Resource
 	[Export(PropertyHint.MultilineText)] public string Description { get; set; } = "";
 	[Export] public Texture2D Icon { get; set; }
 	[Export] public Godot.Collections.Array<StatModifier> Modifiers { get; set; } = new();
+	[Export]
+	public int Cost { get; set; } = 10; //added for gamemaster
 }

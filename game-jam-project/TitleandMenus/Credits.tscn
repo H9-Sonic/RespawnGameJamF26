@@ -38,9 +38,11 @@ autowrap_mode = 0
 [node name="RichTextLabel2" type="RichTextLabel" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=1411708756]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 24
-text = "Dungeon Asset Pack - Pixel Poem
+text = "PIXEL_POEM DUNGEON TILESET II - Pixel_Poem
 
-Tiny RPG Charater Asset Pack - Zerie
+Tiny RPG Charater Asset Pack 01 - Zerie
+
+Coins & Gems & Chests & More Asset Pack - greatdocbrown
 
 Developers - Nathan Jones, Daniel Vargas
 "

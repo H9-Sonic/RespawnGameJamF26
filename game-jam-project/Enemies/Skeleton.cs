@@ -5,12 +5,12 @@ public partial class Skeleton : CharacterBody2D, IDamageable
 {
 	public const float Speed = 100.0f;
 	[Export] 
-	float damage = 2.0f;
+	float damage = 4.0f;
 	[Export]
 	float aps = 2.0f;
 
 	[Export]
-	float maxHealth = 30.0f;
+	float maxHealth = 45.0f;
 	float health;
 	float attack_speed;
 	float attack_cooldown;

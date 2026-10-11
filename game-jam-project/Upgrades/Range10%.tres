@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://dnrvcarjcbghf"
 
 [resource]
 script = ExtResource("3_vefd5")
-DisplayName = "Plantain"
+DisplayName = "Potassium 10 coins"
 Description = "Increase Attack Range by 10%"
 Icon = ExtResource("1_23jnp")
 Modifiers = Array[ExtResource("2_oaqei")]([SubResource("Resource_8be4f")])

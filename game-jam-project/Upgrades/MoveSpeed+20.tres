@@ -12,8 +12,9 @@ metadata/_custom_type_script = "uid://dnrvcarjcbghf"
 
 [resource]
 script = ExtResource("3_hrdse")
-DisplayName = "Agility Gem"
+DisplayName = "Agility Gem 5 coins"
 Description = "Increase Move Speed"
 Icon = ExtResource("1_5h8ye")
 Modifiers = Array[ExtResource("2_n4idp")]([SubResource("Resource_8be4f")])
+Cost = 5
 metadata/_custom_type_script = "uid://dh4ocdw785wgm"

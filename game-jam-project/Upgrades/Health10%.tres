@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://dnrvcarjcbghf"
 
 [resource]
 script = ExtResource("2_4irai")
-DisplayName = "Blood Rush"
+DisplayName = "Blood Rush 10 coins"
 Description = "Increase Health by 10%"
 Icon = ExtResource("1_4irai")
 Modifiers = Array[ExtResource("1_d3114")]([SubResource("Resource_8be4f")])

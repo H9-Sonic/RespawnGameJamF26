@@ -12,8 +12,9 @@ metadata/_custom_type_script = "uid://dnrvcarjcbghf"
 
 [resource]
 script = ExtResource("3_65csj")
-DisplayName = "Tough Love"
+DisplayName = "Tough Love 5 coins"
 Description = "Increase Health"
 Icon = ExtResource("1_jt5oh")
 Modifiers = Array[ExtResource("2_48cwn")]([SubResource("Resource_8be4f")])
+Cost = 5
 metadata/_custom_type_script = "uid://dh4ocdw785wgm"

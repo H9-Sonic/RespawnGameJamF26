@@ -12,7 +12,7 @@ metadata/_custom_type_script = "uid://dnrvcarjcbghf"
 
 [resource]
 script = ExtResource("2_flg85")
-DisplayName = "LoliWop"
+DisplayName = "LoliWop 10 coins"
 Description = "Increase Damage by 10%"
 Icon = ExtResource("1_flg85")
 Modifiers = Array[ExtResource("1_56w0m")]([SubResource("Resource_0afw6")])

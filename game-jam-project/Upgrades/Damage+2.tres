@@ -11,8 +11,9 @@ metadata/_custom_type_script = "uid://dnrvcarjcbghf"
 
 [resource]
 script = ExtResource("3_8k5da")
-DisplayName = "Dream Sickle"
+DisplayName = "Dream Sickle 5 coins"
 Description = "Increase Damage"
 Icon = ExtResource("1_6472t")
 Modifiers = Array[ExtResource("2_okx4v")]([SubResource("Resource_0afw6")])
+Cost = 5
 metadata/_custom_type_script = "uid://dh4ocdw785wgm"

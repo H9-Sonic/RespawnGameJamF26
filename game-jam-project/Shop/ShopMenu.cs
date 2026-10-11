@@ -55,10 +55,18 @@ public partial class ShopMenu : Control
 		}
 	}
 
-	public void Open(int wave, int earned, int coins)
+	
+	public bool Open(int wave, int earned, int coins)
 	{
 		GD.Print($"Open called. Visible={Visible}, pool={UpgradePool.Count}");
-		if (Visible || UpgradePool.Count == 0) return;
+
+		if (Visible) return true;
+
+		if (UpgradePool.Count == 0)
+		{
+			GD.PushWarning("ShopMenu: UpgradePool is empty, shop not opened.");
+			return false;
+		}
 
 		_wave = wave;
 		_earned = earned;
@@ -72,6 +80,7 @@ public partial class ShopMenu : Control
 		Visible = true;
 		GetTree().Paused = true;
 		GD.Print("opened");
+		return true;
 	}
 
 	public void Close()

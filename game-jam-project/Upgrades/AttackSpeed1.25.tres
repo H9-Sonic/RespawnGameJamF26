@@ -13,8 +13,9 @@ metadata/_custom_type_script = "uid://dnrvcarjcbghf"
 
 [resource]
 script = ExtResource("3_hkbgb")
-DisplayName = "Mysterious Ooze"
+DisplayName = "Mysterious Ooze 15 coins"
 Description = "Multiply Attack Speed By 1.25"
 Icon = ExtResource("1_jvjts")
 Modifiers = Array[ExtResource("2_a0j7d")]([SubResource("Resource_8be4f")])
+Cost = 15
 metadata/_custom_type_script = "uid://dh4ocdw785wgm"

@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://6v7bp7bytk82"]
 
 [ext_resource type="Script" uid="uid://ynnd3pgcrrrg" path="res://Shop/ShopMenu.cs" id="1_kopr2"]
+[ext_resource type="PackedScene" uid="uid://xyfyq2r8l3of" path="res://Shop/ShopCard.tscn" id="2_pw2hh"]
 
-[sub_resource type="PackedScene" id="PackedScene_kopr2"]
-
-[node name="ShopMenu" type="Control" unique_id=1291688526 node_paths=PackedStringArray("PlayerNode", "CardContainer", "CloseButton")]
+[node name="ShopMenu" type="Control" unique_id=1291688526 node_paths=PackedStringArray("CardContainer", "CloseButton")]
 process_mode = 3
 custom_minimum_size = Vector2(1152, 648)
 layout_mode = 3
@@ -12,17 +11,15 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_kopr2")
-PlayerNode = NodePath("")
-CardScene = SubResource("PackedScene_kopr2")
-CardContainer = NodePath("")
+CardScene = ExtResource("2_pw2hh")
+CardContainer = NodePath("Center/PanelContainer/VBoxContainer/GridContainer")
 CloseButton = NodePath("Center/PanelContainer/VBoxContainer/CloseButton")
 OpenOnReady = true
 
 [node name="Dim" type="ColorRect" parent="." unique_id=930073745]
-custom_minimum_size = Vector2(1152, 648)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1153.0
+offset_bottom = 647.0
 color = Color(0, 0, 0, 0.6)
 
 [node name="Center" type="CenterContainer" parent="." unique_id=1539992162]
@@ -32,7 +29,7 @@ offset_right = 40.0
 offset_bottom = 62.0
 
 [node name="PanelContainer" type="PanelContainer" parent="Center" unique_id=1334749151]
-custom_minimum_size = Vector2(1152, 648)
+custom_minimum_size = Vector2(700, 400)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Center/PanelContainer" unique_id=67079667]
@@ -43,9 +40,9 @@ layout_mode = 2
 text = "Shop"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Center/PanelContainer/VBoxContainer" unique_id=947154394]
+[node name="GridContainer" type="GridContainer" parent="Center/PanelContainer/VBoxContainer" unique_id=1753922933]
 layout_mode = 2
-theme_override_constants/separation = 16
+columns = 3
 
 [node name="CloseButton" type="Button" parent="Center/PanelContainer/VBoxContainer" unique_id=900396364]
 layout_mode = 2

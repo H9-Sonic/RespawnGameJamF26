@@ -15,6 +15,7 @@ public partial class ShopMenu : Control
 	// What each slot currently holds, and whether the player locked it.
 	private Upgrade[] _slots;
 	private bool[] _locked;
+	private ShopCard[] _cards;
 
 	public override void _Ready()
 	{
@@ -27,6 +28,8 @@ public partial class ShopMenu : Control
 		CloseButton.Pressed += Close;
 
 		if (OpenOnReady) CallDeferred(MethodName.Open);
+		
+		_cards = new ShopCard[ChoiceCount];
 	}
 
 	public override void _UnhandledInput(InputEvent e)
@@ -40,13 +43,17 @@ public partial class ShopMenu : Control
 
 	public void Open()
 	{
+		GD.Print($"Open called. Visible={Visible}, pool={UpgradePool.Count}");
 		if (Visible || UpgradePool.Count == 0) return;
 
 		RollSlots();
+		GD.Print("rolled");
 		BuildCards();
+		GD.Print("built");
 
 		Visible = true;
 		GetTree().Paused = true;
+		GD.Print("opened");
 	}
 
 	public void Close()
@@ -86,7 +93,7 @@ public partial class ShopMenu : Control
 		}
 	}
 
-	private void BuildCards()
+		private void BuildCards()
 	{
 		foreach (Node child in CardContainer.GetChildren())
 		{
@@ -94,7 +101,7 @@ public partial class ShopMenu : Control
 			child.QueueFree();
 		}
 
-		ShopCard first = null;
+		System.Array.Clear(_cards);
 
 		for (int i = 0; i < _slots.Length; i++)
 		{
@@ -105,10 +112,10 @@ public partial class ShopMenu : Control
 			card.Setup(i, _slots[i], _locked[i]);
 			card.Chosen += OnChosen;
 			card.LockToggled += OnLockToggled;
-			first ??= card;
+			_cards[i] = card;
 		}
 
-		first?.FocusSelect();   // keyboard / gamepad support
+		FocusFirstAvailable();
 	}
 
 	private void OnLockToggled(int slot, bool locked) => _locked[slot] = locked;
@@ -116,14 +123,31 @@ public partial class ShopMenu : Control
 	private void OnChosen(int slot)
 	{
 		Upgrade upgrade = _slots[slot];
+		if (upgrade == null) return;
+
 		PlayerNode.Stats.AddUpgrade(upgrade);
 
 		if (RemoveChosenFromPool) UpgradePool.Remove(upgrade);
 
-		// The taken slot is consumed: unlock it so it rerolls next time.
+		// The slot is consumed: it rerolls the next time the shop opens.
 		_locked[slot] = false;
 		_slots[slot] = null;
 
-		Close();
+		_cards[slot].MarkSold();
+		FocusFirstAvailable();   // a disabled button loses focus, so move it
+	}
+	
+	private void FocusFirstAvailable()
+	{
+		foreach (ShopCard card in _cards)
+		{
+			if (card != null && !card.IsSold)
+			{
+				card.FocusSelect();
+				return;
+			}
+		}
+
+		CloseButton.GrabFocus();
 	}
 }

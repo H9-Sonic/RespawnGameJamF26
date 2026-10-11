@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://ht8v6cs7hkc4"]
+
+[ext_resource type="Texture2D" uid="uid://dxbyemwq1oqhs" path="res://Assets/MoveSpeedPercent.png" id="1_osepx"]
+[ext_resource type="Script" uid="uid://dnrvcarjcbghf" path="res://Player/StatModifier.cs" id="2_lmmtc"]
+[ext_resource type="Script" uid="uid://dh4ocdw785wgm" path="res://Upgrades/Upgrade.cs" id="3_pn1sh"]
+
+[sub_resource type="Resource" id="Resource_8be4f"]
+script = ExtResource("2_lmmtc")
+Stat = 1
+Type = 1
+Value = 0.1
+metadata/_custom_type_script = "uid://dnrvcarjcbghf"
+
+[resource]
+script = ExtResource("3_pn1sh")
+DisplayName = "Sugar Rush"
+Description = "Increase Move Speed by 10%"
+Icon = ExtResource("1_osepx")
+Modifiers = Array[ExtResource("2_lmmtc")]([SubResource("Resource_8be4f")])
+metadata/_custom_type_script = "uid://dh4ocdw785wgm"

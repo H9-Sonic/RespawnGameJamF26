@@ -1,18 +1,39 @@
 [gd_scene format=3 uid="uid://cp5174wiiqvke"]
 
 [ext_resource type="PackedScene" uid="uid://6v7bp7bytk82" path="res://Shop/ShopMenu.tscn" id="1_6uqi0"]
+[ext_resource type="Script" uid="uid://dxps8qe7u7lob" path="res://TestShop.cs" id="1_vxl6d"]
 [ext_resource type="PackedScene" uid="uid://5ursa0tx3jem" path="res://Player/player.tscn" id="2_ppyta"]
-[ext_resource type="PackedScene" uid="uid://xyfyq2r8l3of" path="res://Shop/ShopCard.tscn" id="3_ykrsh"]
+[ext_resource type="Script" uid="uid://dh4ocdw785wgm" path="res://Upgrades/Upgrade.cs" id="2_vbegm"]
+[ext_resource type="Resource" uid="uid://baks3k4bfl1rg" path="res://Upgrades/Damage1.5x.tres" id="3_ehkex"]
+[ext_resource type="Resource" uid="uid://cfptkmf32gthx" path="res://Upgrades/Damage+2.tres" id="4_xersf"]
+[ext_resource type="Resource" uid="uid://cdnyuba8dg7yw" path="res://Upgrades/Damage10%.tres" id="5_00tp4"]
+[ext_resource type="Resource" uid="uid://1o2cksdc6ick" path="res://Upgrades/Health+25.tres" id="6_xersf"]
+[ext_resource type="Resource" uid="uid://cfsbfwx4orskq" path="res://Upgrades/Health10%.tres" id="7_00tp4"]
+[ext_resource type="Resource" uid="uid://cxfhxvyc8udux" path="res://Upgrades/Health1.25x.tres" id="8_vxl6d"]
+[ext_resource type="Resource" uid="uid://c7b6ixc1wbiah" path="res://Upgrades/MoveSpeed+20.tres" id="9_eski5"]
+[ext_resource type="Resource" uid="uid://ht8v6cs7hkc4" path="res://Upgrades/MoveSpeed10%.tres" id="10_pdf00"]
+[ext_resource type="Resource" uid="uid://cm7x5xifqtv3o" path="res://Upgrades/MoveSpeed1.15.tres" id="11_a6gra"]
+[ext_resource type="Resource" uid="uid://4d2v3yyfusui" path="res://Upgrades/AttackSpeed10%.tres" id="12_dwqlq"]
+[ext_resource type="Resource" uid="uid://dhgls210udd1q" path="res://Upgrades/AttackSpeed+0.5.tres" id="13_15c7i"]
+[ext_resource type="Resource" uid="uid://x4v3q1q74h10" path="res://Upgrades/AttackSpeed1.25.tres" id="14_xpeyw"]
+[ext_resource type="Resource" uid="uid://bbrcdhpsshp86" path="res://Upgrades/Range+5.tres" id="15_dpmuy"]
+[ext_resource type="Resource" uid="uid://co71sy7p54r0i" path="res://Upgrades/Range1.25x.tres" id="16_yww54"]
+[ext_resource type="Resource" uid="uid://tcl73n3abp5h" path="res://Upgrades/Range10%.tres" id="17_j75vh"]
+[ext_resource type="Resource" uid="uid://ls2bwhr1ovju" path="res://Upgrades/DashCharge.tres" id="18_rrpoi"]
 
 [node name="Test" type="Node2D" unique_id=48897952]
+script = ExtResource("1_vxl6d")
 
-[node name="ShopMenu" parent="." unique_id=1915947621 node_paths=PackedStringArray("PlayerNode", "CardContainer") instance=ExtResource("1_6uqi0")]
-PlayerNode = NodePath("Player")
-CardContainer = NodePath("ShopCard")
+[node name="Player" parent="." unique_id=1514779434 instance=ExtResource("2_ppyta")]
 
-[node name="Player" parent="ShopMenu" unique_id=1514779434 instance=ExtResource("2_ppyta")]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=220293723]
 
-[node name="ShopCard" parent="ShopMenu" unique_id=1489847266 instance=ExtResource("3_ykrsh")]
-layout_mode = 0
-offset_right = 160.0
-offset_bottom = 220.0
+[node name="ShopLayer" type="CanvasLayer" parent="." unique_id=81351432]
+process_mode = 3
+
+[node name="ShopMenu" parent="ShopLayer" unique_id=1915947621 node_paths=PackedStringArray("PlayerNode") instance=ExtResource("1_6uqi0")]
+unique_name_in_owner = true
+offset_right = 1152.0
+offset_bottom = 648.0
+PlayerNode = NodePath("../../Player")
+UpgradePool = Array[ExtResource("2_vbegm")]([ExtResource("18_rrpoi"), ExtResource("17_j75vh"), ExtResource("16_yww54"), ExtResource("15_dpmuy"), ExtResource("3_ehkex"), ExtResource("4_xersf"), ExtResource("5_00tp4"), ExtResource("6_xersf"), ExtResource("7_00tp4"), ExtResource("8_vxl6d"), ExtResource("9_eski5"), ExtResource("10_pdf00"), ExtResource("11_a6gra"), ExtResource("12_dwqlq"), ExtResource("13_15c7i"), ExtResource("14_xpeyw")])
